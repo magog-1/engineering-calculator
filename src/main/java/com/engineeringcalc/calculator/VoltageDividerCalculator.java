@@ -194,4 +194,56 @@ public class VoltageDividerCalculator {
             solutions.add(sol);
         }
     }
+
+    /**
+     * Рассчитывает выходное напряжение делителя.
+     *
+     * <p>В схеме делителя напряжения выходное напряжение определяется
+     * соотношением резисторов R1 и R2.
+     *
+     * @param inputVoltage входное напряжение в вольтах (должно быть >= 0)
+     * @param r1 сопротивление первого резистора в омах (должно быть > 0)
+     * @param r2 сопротивление второго резистора в омах (должно быть > 0)
+     * @return выходное напряжение в вольтах
+     * @throws IllegalArgumentException если любой из параметров некорректен
+     *
+     * <pre>
+     * Пример использования:
+     * {@code
+     * double vout = VoltageDividerCalculator.calculateOutputVoltage(12.0, 1000.0, 2000.0);
+     * // vout будет равно 8.0 вольт
+     * }
+     * </pre>
+     */
+    public static double calculateOutputVoltage(double inputVoltage, double r1, double r2) {
+        if (inputVoltage < 0) {
+            throw new IllegalArgumentException("Входное напряжение не может быть отрицательным");
+        }
+        if (r1 <= 0 || r2 <= 0) {
+            throw new IllegalArgumentException("Сопротивления должны быть положительными");
+        }
+
+        return inputVoltage * (r2 / (r1 + r2));
+    }
+
+    /**
+     * Рассчитывает необходимое сопротивление R2 для получения заданного выходного напряжения.
+     *
+     * @param inputVoltage входное напряжение в вольтах
+     * @param outputVoltage желаемое выходное напряжение в вольтах
+     * @param r1 сопротивление первого резистора в омах
+     * @return необходимое сопротивление R2 в омах
+     * @throws IllegalArgumentException если выходное напряжение больше входного
+     */
+    public static double calculateRequiredR2(double inputVoltage, double outputVoltage, double r1) {
+        if (outputVoltage > inputVoltage) {
+            throw new IllegalArgumentException(
+                    "Выходное напряжение не может быть больше входного в делителе");
+        }
+        if (outputVoltage == inputVoltage) {
+            throw new IllegalArgumentException("Невозможно получить Vout = Vin в делителе");
+        }
+
+        return r1 * outputVoltage / (inputVoltage - outputVoltage);
+    }
 }
