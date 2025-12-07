@@ -51,18 +51,6 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -108,18 +96,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.6.3</version>
-                <configuration>
-                    <show>public</show>
-                    <author>true</author>
-                    <version>true</version>
-                    <encoding>UTF-8</encoding>
-                    <charset>UTF-8</charset>
-                </configuration>
             </plugin>
         </plugins>
     </build>
