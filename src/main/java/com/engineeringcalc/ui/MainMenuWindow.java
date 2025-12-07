@@ -9,15 +9,59 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Окно главного меню приложения Engineering Calculator.
+ *
+ * <p>Предоставляет пользователю доступ к основным функциям приложения:
+ * калькуляторам, истории вычислений и выходу из системы.
+ * Отображает приветствие с именем пользователя и его ролью.</p>
+ *
+ * <p>Доступные функции в меню:</p>
+ * <ul>
+ *   <li>Калькулятор закона Ома</li>
+ *   <li>Калькулятор делителя напряжения</li>
+ *   <li>Просмотр истории вычислений</li>
+ *   <li>Выход из аккаунта</li>
+ * </ul>
+ *
+ * @author magog-1
+ * @version 1.0
+ * @since 2025-12-08
+ * @see User
+ * @see OhmsLawWindow
+ * @see VoltageDividerWindow
+ * @see HistoryWindow
+ */
 public class MainMenuWindow {
+    /** Главное окно приложения JavaFX */
     private Stage stage;
+
+    /** Текущий аутентифицированный пользователь */
     private User currentUser;
 
+    /**
+     * Создает новое окно главного меню.
+     *
+     * @param stage главное окно приложения JavaFX
+     * @param currentUser текущий аутентифицированный пользователь
+     */
     public MainMenuWindow(Stage stage, User currentUser) {
         this.stage = stage;
         this.currentUser = currentUser;
     }
 
+    /**
+     * Отображает главное меню с кнопками навигации.
+     *
+     * <p>Создает интерфейс с приветствием, информацией о роли пользователя
+     * и кнопками для доступа к различным функциям калькулятора.
+     * Настраивает обработчики событий для всех кнопок навигации.</p>
+     *
+     * @see OhmsLawWindow#show()
+     * @see VoltageDividerWindow#show()
+     * @see HistoryWindow#show()
+     * @see LoginWindow#show()
+     */
     public void show() {
         VBox root = new VBox(15);
         root.setPadding(new Insets(30));
